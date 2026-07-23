@@ -6,8 +6,7 @@ sealed interface CompressionUiState {
 
     // When compression finishes and the image state is ready
     data class Success(
-        val original: Image,
-        val compressed: Image
+        val result : MutableList<BatchItem>
     ) : CompressionUiState
 
     data class Error(val message: String) : CompressionUiState

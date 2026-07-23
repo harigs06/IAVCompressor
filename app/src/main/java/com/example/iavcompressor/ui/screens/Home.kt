@@ -1,6 +1,5 @@
 package com.example.iavcompressor.ui.screens
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,11 +15,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.iavcompressor.helper.CompressionQuality
+import com.example.iavcompressor.viewmodels.CompressionViewModel
 
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    onNavigateToCompress: (Uri) -> Unit
+    onNavigateToCompress: (CompressionQuality) -> Unit,
+    sharedViewModel : CompressionViewModel
 ){
     Column(
         horizontalAlignment = Alignment.Start,
@@ -38,7 +40,7 @@ fun HomeScreen(
 
 
            Text(
-               "IAVCompressor",
+               "IAV Compressor",
                fontSize = 22.sp,
                fontStyle = FontStyle.Italic,
                fontWeight = FontWeight.Bold
@@ -50,8 +52,8 @@ fun HomeScreen(
         ImagePicker(
             modifier = Modifier
                 .fillMaxWidth(),
-            onNavigation = onNavigateToCompress
-    
+            onNavigation = onNavigateToCompress,
+            sharedViewModel = sharedViewModel
         )
 
 //        Text("Image Picker")
